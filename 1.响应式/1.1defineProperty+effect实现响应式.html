@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let quantity = 1 // 数量
+    let price = 10 // 单价
+    let total = 0 // 总价
+
+    const product = {
+      quantity,
+      price
+    }
+
+    // 计算价格
+    const effect = () => {
+      total =  product.quantity * product.price
+    }
+
+    Object.defineProperties(product, {
+      quantity: {
+        get() {
+          // console.log('quantity getter')
+          return quantity
+        },
+        set(val) {
+          // console.log('quantity setter')
+          quantity = val
+          effect()
+          console.log(`total: ${total}`)
+        }
+      },
+      price: {
+        get() {
+          // console.log('price getter')
+          return price
+        },
+        set(val) {
+          // console.log('price setter')
+          price = val
+          effect()
+          console.log(`total: ${total}`)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
